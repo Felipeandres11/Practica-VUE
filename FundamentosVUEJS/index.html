@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        
+        <h1> {{titulo}} </h1>
+
+        <h1>Formularios</h1>
+
+        <label name="name">Nombre: </label>
+        <input type="text" name="name" id="name" v-model="nuevaFruta">
+
+        <label name="cantidad">Cantidad: </label>
+        <input type="text" name="cantidad" id="cantidad" v-model="cantidad">
+
+        <button type="button" v-on:click="agregarFruta"> Agregar fruta</button>
+
+        <ul>
+           <li v-for="fruta of frutas">{{fruta.nombre}}
+
+               <input type="number" v-model.number="fruta.cantidad">
+
+               <span v-if="fruta.cantidad === 0">- Sin Stock</span>
+
+               <button @click="fruta.cantidad++">+</button>
+           </li>
+        </ul>
+         
+        <h4>Total: {{sumarFrutas}} </h4>
+
+        <br>
+
+        <ul>
+            <li v-for="auto of autos">{{auto.nombre}} - {{auto.color}} <span v-if="auto.color==='azul'">NO TIENE STOCK</span> </li>
+        </ul>
+
+
+        <h1> Personas </h1>
+
+        <label for="nombrePersona">Nombre Persona:</label>
+        <input id="nombrePersona" v-model="nombrePersona" @keyup.enter="agregarPersona"></input>
+
+        <label for="edadPersona">Edad Persona:</label>
+        <input id="edadPersona" v-model="edadPersona" ></input>
+
+        <button id="agregarPersona" @click="agregarPersona" >Agregar Nueva Persona</button>
+
+        <p v-for="persona of personas">Nombre: {{persona.nombre}} - Edad: {{persona.edad}}
+            <span v-if="persona.edad >= 23">Todos tienen mas de 22 años </span>
+        </p>
+
+        
+
+       
+       
+        
+    </div>
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="01.js"></script>
+</body>
+</html>
